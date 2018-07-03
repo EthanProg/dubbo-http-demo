@@ -25,8 +25,8 @@ public class DemoConsumer {
         UserService userService = context.getBean(UserService.class);
         System.out.println(userService.getUser(1L));
 
-//        UserRestService userRestService = context.getBean(UserRestService.class);
-//        System.out.println(userRestService.getUser(3L));
+        UserRestService userRestService = context.getBean(UserRestService.class);
+        System.out.println(userRestService.getUser(3L));
     }
 
 

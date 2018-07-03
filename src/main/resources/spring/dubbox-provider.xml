@@ -23,6 +23,8 @@
 
     <bean id="userService" class="com.dubbodemo.test.dubbox.UserServiceImpl"/>
 
+    <!--<dubbo:service interface="com.dubbodemo.test.dubbox.UserRestService" ref="userRestService" protocol="dubbo" validation="true"/>-->
+
     <dubbo:service interface="com.dubbodemo.test.dubbox.UserRestService" ref="userRestService" protocol="rest" validation="true"/>
 
     <bean id="userRestService" class="com.dubbodemo.test.dubbox.UserRestServiceImpl">

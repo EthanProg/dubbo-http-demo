@@ -14,6 +14,6 @@
 
     <dubbo:reference id="userService" interface="com.dubbodemo.test.dubbox.UserService"/>
 
-    <!--<dubbo:reference id="userRestService" interface="com.dubbodemo.test.dubbox.UserRestService" protocol="rest" validation="true"/>-->
+    <dubbo:reference id="userRestService" interface="com.dubbodemo.test.dubbox.UserRestService"/>
 
 </beans>

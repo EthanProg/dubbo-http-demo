@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-@Path("users")
-@Consumes({MediaType.APPLICATION_JSON, MediaType.TEXT_XML})
-@Produces({ContentType.APPLICATION_JSON_UTF_8, ContentType.TEXT_XML_UTF_8})
+
 public class UserRestServiceImpl implements UserRestService {
 
     private UserService userService;
@@ -21,8 +19,6 @@ public class UserRestServiceImpl implements UserRestService {
         this.userService = userService;
     }
 
-    @GET
-    @Path("{id : \\d+}")
     @Override
     public User getUser(@PathParam("id") Long id) {
         if (RpcContext.getContext().getRequest(HttpServletRequest.class) != null) {
