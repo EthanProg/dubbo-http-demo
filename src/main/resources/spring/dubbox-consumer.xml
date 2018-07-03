@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="demo-consumer" owner="programmer" organization="dubbox"/>
+
+    <dubbo:registry address="zookeeper://10.10.250.130:2181" client="zkclient"/>
+
+    <dubbo:reference id="userRestService" interface="com.dubbodemo.test.dubbox.UserRestService"/>
+
+    <!--使用 dubbo 协议调用定义好的 api.PermissionService 接口-->
+    <dubbo:reference id="dubboService" interface="com.dubbodemo.test.dubbo.IDubboService"/>
+
+    <dubbo:reference id="userService" interface="com.dubbodemo.test.dubbox.UserService"/>
+
+</beans>

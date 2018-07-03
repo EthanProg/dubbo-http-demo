@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="demo-provider" owner="programmer" organization="dubbox"/>
+
+    <dubbo:registry address="zookeeper://10.10.250.130:2181" client="zkclient"/>
+
+    <!-- use tomcat server -->
+    <dubbo:protocol name="rest" port="8889" threads="500" contextpath="services" server="tomcat" accepts="500"
+                    extension="com.alibaba.dubbo.rpc.protocol.rest.support.LoggingFilter"/>
+
+    <!--使用 dubbo 协议实现定义好的 api.PermissionService 接口-->
+    <dubbo:service interface="com.dubbodemo.test.dubbo.IDubboService" ref="dubboService" protocol="dubbo" />
+    <!--具体实现该接口的 bean-->
+    <bean id="dubboService" class="com.dubbodemo.test.dubbo.DubboServiceImpl"/>
+
+    <dubbo:service interface="com.dubbodemo.test.dubbox.UserService" ref="userService" protocol="dubbo" />
+
+    <bean id="userService" class="com.dubbodemo.test.dubbox.UserServiceImpl"/>
+
+    <dubbo:service interface="com.dubbodemo.test.dubbox.UserRestService" ref="userRestService" protocol="rest" validation="true"/>
+
+    <bean id="userRestService" class="com.dubbodemo.test.dubbox.UserRestServiceImpl">
+        <property name="userService" ref="userService"/>
+    </bean>
+
+</beans>
