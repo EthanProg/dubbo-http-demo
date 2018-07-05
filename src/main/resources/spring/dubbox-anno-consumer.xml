@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="demo-consumer" owner="programmer" organization="dubbox"/>
+
+    <dubbo:registry address="zookeeper://10.10.250.130:2181"/>
+
+    <dubbo:annotation package="com.dubbodemo.test.dubbox.annotation.services, com.dubbodemo.test.dubbox.annotation.consumer" />
+
+</beans>
